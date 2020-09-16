@@ -6,6 +6,7 @@
     box-sizing: border-box;
     visibility: visible;
     margin-top: 40px;
+    border-bottom: 1px solid #ccc;
 }
 
 .slider-frame{
@@ -59,6 +60,8 @@
     border: none;
     background: none;
     pointer-events: auto;
+    cursor: pointer;
+    outline: 0;
 }
 
 .image__area{
@@ -156,7 +159,22 @@
     font-stretch: normal;
     letter-spacing: normal;
     cursor: pointer;
-    height: 40px;
-    font-size: 16px;
-    padding: 8px 24px;
+    width: 102px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 16px;
+    line-height: 20px;
+    outline: 0;
+}
+
+.head_betwwen{
+    padding: 16px 0;
+    max-width: 75%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: normal;
+    margin: 0;
 }

@@ -12,7 +12,6 @@ body{
 }
 
 .section{
-    position: absolute;
     top: 60px;
     bottom: 0;
     left: 0;
@@ -21,6 +20,7 @@ body{
     overflow-y: auto;
     scroll-behavior: smooth;
     padding: 0 8px 8px;
+    position: relative;
 }
 
 @media (min-width: 1024px){

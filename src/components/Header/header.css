@@ -11,6 +11,8 @@
     flex-direction: column;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
+    position: fixed;
+    z-index: 100;
 }
 
 .inner__section{
