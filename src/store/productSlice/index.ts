@@ -1,21 +1,23 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {productType, cartType} from "./../../types";
 
 const productSlice = createSlice({
     name: "cart",
-    initialState : [] as any,
+    initialState : [] as cartType[],
     reducers : {
         add_to_cart : (state, action) => {
-            console.log(state);
-            if(state.find((cart: any) => cart.product.id === action.payload.id)){
-                state = state.map((cartitem : any) => {
-                    if(cartitem?.product?.id === action.payload.id)
-                        console.log(cartitem.quantity, cartitem?.product)
 
+            if(state.find((cart: cartType) => cart.product.id === action.payload.id)){
+                return state.map((cartitem : cartType) => {
+                    if(cartitem?.product?.id === action.payload.id){
                         return {
                             ...cartitem,
                             quantity: cartitem.quantity + 1
-                        }
+                        } 
+
+                    }
                     
+                    return cartitem
                 })
             }
             else{

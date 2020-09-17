@@ -3,35 +3,12 @@ import "./header.css";
 import logo from "./../../images/logo.svg";
 import logoIcon from "./../../images/icon.png";
 import SearchIcon from '@material-ui/icons/Search';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { makeStyles } from '@material-ui/core/styles';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; 
+import Cart from '../Cart/Cart';
 
-
-const useStyles = makeStyles(theme => ({
-    paperAnchorRight: {
-        top: '60px',
-        width: '320px'
-    },
-    icon_back: {
-        display: 'none',
-        cursor: 'pointer'
-    },
-    [theme.breakpoints.down('xs')]: {
-        paperAnchorRight: {
-            width: '100%'
-        },
-        icon_back: {
-            display: 'block',
-            cursor: 'pointer'
-        }
-    },
-}));
 
 const Header = () => {
     const [open, setOpen] = useState(false);
-    const classes = useStyles();
 
     const openDrawer = () => {
         setOpen(true);
@@ -84,35 +61,7 @@ const Header = () => {
                     </div>
                 </div>
 
-                <SwipeableDrawer
-                    anchor={'right'}
-                    open={open}
-                    onClose={closeDrawer}
-                    onOpen={openDrawer}
-                    classes={{ paperAnchorRight: classes.paperAnchorRight}}
-                    >
-                        <div className="sidebar__full">
-                            <header className="sidebar__header">
-                                <ArrowBackIosIcon className={classes.icon_back} onClick={closeDrawer}/>
-                                <span>Cart</span>
-                                <span>0 items</span>
-                            </header>
-                            <div className="cart__box">
-                                <div className="cart_empty_box">
-                                    <span>Your cart is currenty empty</span>
-                                </div>
-                            </div>
-                            <footer className="sidecart__footer">
-                                <div className="footer__inner">
-                                    <div className="total__price_bar">
-                                        <span className="subtotal_heading">Subtotal</span>
-                                        <span className="subtotal_amount">$0.00</span>
-                                    </div>
-                                    <button className="checkout_cart_button">Check out</button>
-                                </div>
-                            </footer>
-                        </div>
-                </SwipeableDrawer>
+                <Cart open={open} openDrawer={openDrawer} closeDrawer={closeDrawer}/>
             </div>
         </Fragment>
     )
