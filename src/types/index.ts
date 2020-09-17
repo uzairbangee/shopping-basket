@@ -4,7 +4,7 @@ export type productType = {
     image: string,
     price: number
 }
-
+ 
 export type cartType = {
     product: productType,
     quantity: number
