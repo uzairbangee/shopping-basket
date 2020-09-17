@@ -5,11 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import {useSelector} from "react-redux"
 import {RootState} from "./../../store";
 import "./cart.css";
+import CartItem from '../CartItem/CartItem';
 
 const useStyles = makeStyles(theme => ({
     paperAnchorRight: {
         top: '60px',
-        width: '320px'
+        width: '320px',
+        right: 0,
+        bottom: 0,
+        boxShadow: '0 0 2em rgba(0,0,0,.15)',
+        position: 'fixed',
+        height: 'auto'
     },
     icon_back: {
         display: 'none',
@@ -34,7 +40,7 @@ interface Props {
 
 const Cart = ({open, openDrawer, closeDrawer}: Props): ReactElement => {
     const classes = useStyles();
-    const cart = useSelector((state: RootState) => state.cart);
+    const {cart, count, total} = useSelector((state: RootState) => state.cart);
     return (
         <Fragment>
             <SwipeableDrawer
@@ -48,24 +54,19 @@ const Cart = ({open, openDrawer, closeDrawer}: Props): ReactElement => {
                         <header className="sidebar__header">
                             <ArrowBackIosIcon className={classes.icon_back} onClick={closeDrawer}/>
                             <span>Cart</span>
-                            <span>0 items</span>
+                            <span>{count} items</span>
                         </header>
                         <div className="cart__box">
                             {
                                 cart.length > 0 
                                 ?
-                                <div className="cart__item">
-                                    <div className="cart__item_box">
-                                        <span className="cart_image__area">
-                                            <div className="cart_image">
-                                                <img src="" className="cart__image"/>
-                                            </div>
-                                        </span>
-                                        <div className="cart__info__box">
-                                            <span className="cart__product_title">jfghf hgfghfgf</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                cart.map((cartitem, index) => (
+                                    <CartItem
+                                        key={index}
+                                        product={cartitem.product}
+                                        quantity={cartitem.quantity}
+                                    />
+                                ))
                                 :
                                 <div className="cart_empty_box">
                                     <span>Your cart is currenty empty</span>
@@ -76,7 +77,7 @@ const Cart = ({open, openDrawer, closeDrawer}: Props): ReactElement => {
                             <div className="footer__inner">
                                 <div className="total__price_bar">
                                     <span className="subtotal_heading">Subtotal</span>
-                                    <span className="subtotal_amount">$0.00</span>
+                                    <span className="subtotal_amount">${total}</span>
                                 </div>
                                 <button className="checkout_cart_button">Check out</button>
                             </div>

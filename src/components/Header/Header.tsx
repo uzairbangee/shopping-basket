@@ -5,9 +5,11 @@ import logoIcon from "./../../images/icon.png";
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; 
 import Cart from '../Cart/Cart';
-
+import {useSelector} from "react-redux"
+import {RootState} from "./../../store";
 
 const Header = () => {
+    const {count} = useSelector((state: RootState) => state.cart);
     const [open, setOpen] = useState(false);
 
     const openDrawer = () => {
@@ -55,7 +57,7 @@ const Header = () => {
                                 <img alt="cart" src="https://i5.walmartimages.com/dfw/63fd9f59-392b/48a699e6-5299-4b55-8895-28b7af730df3/v1/cart-nav-white.00018279d92b8685ff0d50c146eefe5491200c0b.svg" width="24" height="24" />
                             </span>
                             <div className="cart__count">
-                                1
+                                {count}
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,8 @@
 import React, { ReactElement, Fragment } from 'react'
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import {productType} from "./../../types";
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 import {add_to_cart} from "./../../store/productSlice";
-import {RootState} from "./../../store";
 
 interface Props {
     product: productType,
@@ -11,9 +10,7 @@ interface Props {
 }
 
 function Products({product, description}: Props): ReactElement {
-    const cart = useSelector((state : RootState) => state.cart);
     const dispatch = useDispatch();
-    console.log(cart);
 
     const addToCart = () => {
         dispatch(add_to_cart(product))
