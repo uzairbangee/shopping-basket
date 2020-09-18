@@ -15,13 +15,13 @@ function CarouselSlider({}: Props): ReactElement {
         <div className="carousel">
             <Carousel showArrows={true} showThumbs={false}>
                 <div>
-                    <img src={header1} />
+                    <img src={header1} alt="header"/>
                 </div>
                 <div>
-                    <img src={header2} />
+                    <img src={header2} alt="header"/>
                 </div>
                 <div>
-                    <img src={header3} />
+                    <img src={header3} alt="header"/>
                 </div>
             </Carousel>
         </div>

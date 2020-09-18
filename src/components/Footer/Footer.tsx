@@ -1,11 +1,7 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import "./footer.css"
 
-interface Props {
-    
-}
-
-function Footer({}: Props): ReactElement {
+const Footer = () => {
     return (
         <footer className="footer">
             <span>© 2020 Walmart. All Rights Reserved.</span>
